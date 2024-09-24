@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spc-k8s-
+  namespace: default
+  labels:
+    k8s-app: spc-k8s
+spec:
+  ports:
+    - name: tcp-8181-8181-ckznb
+      protocol: TCP
+      port: 8181
+      targetPort: 8181
+      nodePort: 31800
+  selector:
+    k8s-app: spc-k8s
+  clusterIP: 10.99.183.253
+  clusterIPs:
+    - 10.99.183.253
+  type: LoadBalancer
+

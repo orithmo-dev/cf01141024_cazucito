@@ -1,2 +1,14 @@
-# dalmj
-El curso **DDD, Arquitectura Limpia y Microservicios con Java**, tiene como meta guiar a los asistentes en el medio ambiente de tecnologías y prácticas de la arquitectura de microservicios para asi proveer funcionalidad de manera altamente desacoplada e interoperable.
+# ARQUITECTURA MICROSERVICIOS - BÁSICO
+
+## LABORATORIOS DEVOPS
+
+Repositorio de soporte al curso Arquitectura de Microservicios - Básico
+
+## NOTAS
+
+_Happy learning..._
+
+## METADATA
+
+- **Versión**: 1.0.0
+- **Fuente**: La información del repositorio origen puede ser consultada en: [readme-original.md](readme-original.md)

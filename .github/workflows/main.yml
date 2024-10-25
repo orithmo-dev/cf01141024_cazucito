@@ -3,8 +3,8 @@ name: ci_sol
 on:
   push:
     branches:
-      - labs/microservices-deployment_spc_sol
       - dev
+      - labs/microservices-deployment_spc_sol
       
 jobs:
   build:

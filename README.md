@@ -1,10 +1,8 @@
-# ARQUITECTURA MICROSERVICIOS - BÁSICO
+# CF01141024
 
-## LABORATORIOS DEVOPS
+El curso/taller **DDD, Arquitectura Limpia y Microservicios con Java**, tiene como meta guiar a los asistentes en el medio ambiente de tecnologías y prácticas de la arquitectura de microservicios para asi proveer funcionalidad de manera altamente desacoplada e interoperable.
 
-Repositorio de soporte al curso Arquitectura de Microservicios - Básico
-
-## NOTAS
+## SUPPORTING MATERIAL
 
 _Happy learning..._
 

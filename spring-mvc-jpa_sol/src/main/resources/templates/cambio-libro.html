@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>LIBRERIA | CAMBIO</title>
+</head>
+
+<body>
+    <p>LIBRERÍA | CAMBIO</p>
+    <hr />
+    <form action="#" th:action="@{/cambio.do/{id}(id=${libro.idLibro})}" th:object="${libro}" method="post">
+        <label for="id">id</label>
+        <input type="text" th:field="*{idLibro}" id="id" readonly>
+        <label for="nombre">Nombre</label>
+        <input type="text" th:field="*{nombre}" id="nombre" placeholder="Nombre" required>
+        <label for="autor">Autor</label>
+        <input type="text" th:field="*{autor}" id="autor" placeholder="Autor">
+        <label for="precio">Precio</label>
+        <input type="number" th:field="*{precio}" id="precio" placeholder="Precio">
+        <input type="submit" value="Cambio Libro">
+    </form>
+    <hr />
+    <p><a href="/index.do">INICIO</a></p>
+</body>
+
+</html>

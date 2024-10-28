@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>LIBRERÍA | INICIO</title>
+</head>
+
+<body>
+    <p>LIBRERÍA</p>
+    <hr />
+    <div th:switch="${libros}">
+        <p th:case="null">Sin Libros</p>
+        <div th:case="*">
+            <h3>Libros</h3>
+            <table border=1>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Autor</th>
+                        <th>Precio</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="libro : ${libros}">
+                        <td th:text="${libro.nombre}"></td>
+                        <td th:text="${libro.autor}"></td>
+                        <td th:text="${libro.precio}"></td>
+                        <td><a th:href="@{/cambio.do/{id}(id=${libro.idLibro})}">Cambio</a></td>
+                        <td><a th:href="@{/baja.do/{id}(id=${libro.idLibro})}">Baja</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr />
+    <p><a href="alta.do">ALTA LIBRO</a></p>
+</body>
+
+</html>

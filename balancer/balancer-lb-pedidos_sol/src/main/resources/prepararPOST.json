@@ -1,0 +1,9 @@
+{
+    "idsProductos": [
+        1,
+        2,
+        3
+    ],
+    "idCliente": 1,
+    "estatusPedido": "NUEVO"
+}

@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: servicio-de-clientes-openfeign
+    
+server:
+  port: ${PORT:9000}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo1" -jar target/openfeign-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo1
+
+server:  
+  port: ${PORT:9001}
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo2" -jar target/openfeign-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo2
+
+server:  
+  port: ${PORT:9002}
+  
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo3" -jar target/openfeign-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo3
+
+server:  
+  port: ${PORT:9003}

@@ -1,0 +1,86 @@
+spring:
+  application:
+    name: servicio-de-pedidos
+
+server:
+  port: ${PORT:9100}
+  error:
+    include-exception: true
+    include-stacktrace: always
+    include-binding-errors: always
+    include-message: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo1" -jar target/balancer-lb-pedidos-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo1
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona1
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9101}
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo2" -jar target/balancer-lb-pedidos-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo2
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona2
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9102}
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo3" -jar target/balancer-lb-pedidos-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo3
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona3
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9103}

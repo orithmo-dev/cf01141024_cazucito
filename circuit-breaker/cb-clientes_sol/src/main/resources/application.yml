@@ -1,0 +1,104 @@
+spring:
+  application:
+    name: servicio-de-clientes
+
+server:
+  port: ${PORT:9300}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      shared:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+        failure-rate-threshold: 40
+        permitted-number-of-calls-in-half-open-state: 1
+        max-wait-duration-in-half-open-state: 10s
+        wait-duration-in-open-state: 10s
+        slow-call-rate-threshold: 40
+        writable-stack-trace-enabled: true
+        automatic-transition-from-open-to-half-open-enabled: true
+
+    instances:
+      servicio-de-clientes:
+        base-config: shared
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo1" -jar target/cb-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo1
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona1
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9301}
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo2" -jar target/cb-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo2
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona2
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9302}
+
+---
+# Para utilizar este perfil
+# java -D"spring.profiles.active=nodo3" -jar target/cb-clientes-0.1.0-SNAPSHOT.jar
+spring:
+  config:
+    activate:
+      on-profile: nodo3
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      zone: zona3
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:3000/eureka/}
+
+server:
+  port: ${PORT:9303}
